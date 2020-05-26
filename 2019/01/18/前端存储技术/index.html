@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>前端存储技术 | Tog | do for do</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="black">
+    
+    
+    <meta name="keywords" content="cookie,storage,indexedDB">
+    <meta name="description" content="存储容量 cookie(4kb) &amp;lt; storage(2.5M~10M) &amp;lt; indexedDB cookie&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;实际开发中没有用到过cookie,不过网上说这个是存用户名和密码。话不多说，开撸。这是原生js写的，不过用jquery更方便（这里不多介绍）1234567891011121314151617181920212223// 函数">
+<meta name="keywords" content="cookie,storage,indexedDB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端存储技术">
+<meta property="og:url" content="https://zhoufanglu.github.io/2019/01/18/前端存储技术/index.html">
+<meta property="og:site_name" content="Tog">
+<meta property="og:description" content="存储容量 cookie(4kb) &amp;lt; storage(2.5M~10M) &amp;lt; indexedDB cookie&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;实际开发中没有用到过cookie,不过网上说这个是存用户名和密码。话不多说，开撸。这是原生js写的，不过用jquery更方便（这里不多介绍）1234567891011121314151617181920212223// 函数">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-15T03:40:47.361Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端存储技术">
+<meta name="twitter:description" content="存储容量 cookie(4kb) &amp;lt; storage(2.5M~10M) &amp;lt; indexedDB cookie&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;实际开发中没有用到过cookie,不过网上说这个是存用户名和密码。话不多说，开撸。这是原生js写的，不过用jquery更方便（这里不多介绍）1234567891011121314151617181920212223// 函数">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/headimg.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">卢方舟</h5>
+          <a href="mailto:735417031@qq.com" title="735417031@qq.com" class="mail">735417031@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://juejin.im/user/5afd39c36fb9a07ac162a318" target="_blank">
+                <i class="icon icon-lg icon-archives"></i>
+                掘金
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhoufanglu" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://movie.douban.com/chart" target="_blank">
+                <i class="icon icon-lg icon-tags"></i>
+                豆瓣
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">前端存储技术</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">
+            <!--<=title.slice(10)>&-->Tog
+        </h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-18T02:37:36.000Z" itemprop="datePublished" class="page-time">
+  2019-01-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/javascript/">javascript</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#cookie"><span class="post-toc-number">1.</span> <span class="post-toc-text">cookie</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#storage"><span class="post-toc-number">2.</span> <span class="post-toc-text">storage</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sessionStorage"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">sessionStorage</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#loacalStorage"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">loacalStorage</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#indexDB"><span class="post-toc-number">3.</span> <span class="post-toc-text">indexDB</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#打开与创建"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">打开与创建</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关闭与删除"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">关闭与删除</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-前端存储技术" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">前端存储技术</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-18 10:37:36" datetime="2019-01-18T02:37:36.000Z" itemprop="datePublished">2019-01-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/javascript/">javascript</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <meta name="referrer" content="no-referrer">
+
+
+<p><strong>存储容量 cookie(4kb) &lt; storage(2.5M~10M) &lt; indexedDB</strong></p>
+<h1 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;实际开发中没有用到过cookie,不过网上说这个是存用户名和密码。话不多说，开撸。<br>这是原生js写的，不过用jquery更方便（这里不多介绍）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数中的参数分别为 cookie 的名称、值以及过期天数---存</span></span><br><span class="line">setCookie(c_name, value, expiredays) &#123;</span><br><span class="line">    <span class="keyword">let</span> exdate = <span class="keyword">new</span> <span class="built_in">Date</span>(c_name, value, expiredays);</span><br><span class="line">    exdate.setDate(exdate.getDate() + expiredays);</span><br><span class="line">    <span class="built_in">document</span>.cookie = c_name + <span class="string">"="</span> + <span class="built_in">escape</span>(value) +</span><br><span class="line">        ((expiredays == <span class="literal">null</span>) ? <span class="string">""</span> : <span class="string">";expires="</span> + exdate.toGMTString())</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">//根据name来取值</span></span><br><span class="line">getCookie(c_name) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">document</span>.cookie.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> c_start = <span class="built_in">document</span>.cookie.indexOf(c_name + <span class="string">"="</span>);</span><br><span class="line">        <span class="keyword">if</span> (c_start != <span class="number">-1</span>) &#123;</span><br><span class="line">            c_start = c_start + c_name.length + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">let</span> c_end = <span class="built_in">document</span>.cookie.indexOf(<span class="string">";"</span>, c_start);</span><br><span class="line">            <span class="keyword">if</span> (c_end == <span class="number">-1</span>) &#123;</span><br><span class="line">                c_end = <span class="built_in">document</span>.cookie.length;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">unescape</span>(<span class="built_in">document</span>.cookie.substring(c_start, c_end));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<h1 id="storage"><a href="#storage" class="headerlink" title="storage"></a>storage</h1><h2 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;<strong>浏览器关闭就消失</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sessionStorage.setItem(<span class="string">'name'</span>,<span class="string">'lufangzhou'</span>)</span><br><span class="line"><span class="comment">//后面参数只支持string类型，json类型需要用JSON.stringify('json')转一下</span></span><br><span class="line"><span class="built_in">console</span>.log(sessionStorage.getItem(<span class="string">'name'</span>))<span class="comment">//输出lufangzhou</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="loacalStorage"><a href="#loacalStorage" class="headerlink" title="loacalStorage"></a>loacalStorage</h2><p>&nbsp;&nbsp;&nbsp;&nbsp; <strong>浏览器关闭也存在，只要不手动清除数据 就一直存在，</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">localStorage.setItem(<span class="string">'name'</span>,<span class="string">'lufangzhou'</span>)</span><br><span class="line"><span class="comment">//后面参数只支持string类型，json类型需要用JSON.stringify('json')转一下</span></span><br><span class="line"><span class="built_in">console</span>.log(localStorage.getItem(<span class="string">'name'</span>))<span class="comment">//输出lufangzhou</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="indexDB"><a href="#indexDB" class="headerlink" title="indexDB"></a>indexDB</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先定义个数据库</span></span><br><span class="line"><span class="keyword">let</span> myDB = &#123;</span><br><span class="line">           name: <span class="string">'testDB'</span>,</span><br><span class="line">           version: <span class="number">2</span>,<span class="comment">//数据库版本</span></span><br><span class="line">           db: <span class="literal">null</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="打开与创建"><a href="#打开与创建" class="headerlink" title="打开与创建"></a>打开与创建</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* name -&gt; myDB.name</span></span><br><span class="line"><span class="comment">* ver -&gt; myDB.version</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">openDB(name, ver) &#123;</span><br><span class="line">              <span class="keyword">let</span> version = ver || <span class="number">1</span></span><br><span class="line">              <span class="keyword">let</span> request = <span class="built_in">window</span>.indexedDB.open(name, version)</span><br><span class="line">              <span class="comment">//失败</span></span><br><span class="line">              request.onerror = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">                  <span class="built_in">console</span>.log(<span class="string">'open error!'</span>);</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="comment">//成功</span></span><br><span class="line">              request.onsuccess = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">                  <span class="keyword">this</span>.myDB.db = e.target.result</span><br><span class="line">                  <span class="comment">//console.log(216, 'create success');</span></span><br><span class="line">              &#125;</span><br><span class="line">              <span class="comment">//当我们传入的版本号和数据库当前版本号不一致的时候onupgradeneeded就会被调用</span></span><br><span class="line">              request.onupgradeneeded = <span class="function">(<span class="params">e</span>) =&gt;</span>&#123;</span><br><span class="line">                  <span class="built_in">console</span>.log(<span class="string">`DB version changed to <span class="subst">$&#123;version&#125;</span>`</span>);</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="built_in">console</span>.log(<span class="number">217</span>, <span class="keyword">this</span>.myDB);</span><br><span class="line">          &#125;,</span><br></pre></td></tr></table></figure>
+<h2 id="关闭与删除"><a href="#关闭与删除" class="headerlink" title="关闭与删除"></a>关闭与删除</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* db -&gt; myDB.db</span></span><br><span class="line"><span class="comment">* name -&gt; myDB.name</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//关闭</span></span><br><span class="line">closeDB(db)&#123;</span><br><span class="line">            db.close()</span><br><span class="line">            &#125;,</span><br><span class="line"><span class="comment">//删除</span></span><br><span class="line">deleteDB(name)&#123;</span><br><span class="line">            <span class="built_in">window</span>.indexedDB.deleteDatabase(name)</span><br><span class="line">          &#125;</span><br></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-12-15T03:40:47.361Z" itemprop="dateUpdated">2019-12-15 11:40:47</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://zhoufanglu.github.io">
+            <img src="/img/headimg.jpg" alt="卢方舟">
+            卢方舟
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cookie/">cookie</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/indexedDB/">indexedDB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/storage/">storage</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhoufanglu.github.io/2019/01/18/前端存储技术/&title=《前端存储技术》 — Tog&pic=https://zhoufanglu.github.io/img/headimg.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhoufanglu.github.io/2019/01/18/前端存储技术/&title=《前端存储技术》 — Tog&source=随便学习" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhoufanglu.github.io/2019/01/18/前端存储技术/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前端存储技术》 — Tog&url=https://zhoufanglu.github.io/2019/01/18/前端存储技术/&via=https://zhoufanglu.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhoufanglu.github.io/2019/01/18/前端存储技术/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/01/22/webpack学习/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">webpack基础学习</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/01/07/markdown/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">markdown</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '',
+                client_secret: '',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        ojbk~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/微信.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/微信.png" data-alipay="/img/支付宝.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>卢方舟 &copy; 2019 - 2020</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">CP_license: 苏ICP备1234556号-1</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhoufanglu.github.io/2019/01/18/前端存储技术/&title=《前端存储技术》 — Tog&pic=https://zhoufanglu.github.io/img/headimg.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhoufanglu.github.io/2019/01/18/前端存储技术/&title=《前端存储技术》 — Tog&source=随便学习" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhoufanglu.github.io/2019/01/18/前端存储技术/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前端存储技术》 — Tog&url=https://zhoufanglu.github.io/2019/01/18/前端存储技术/&via=https://zhoufanglu.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhoufanglu.github.io/2019/01/18/前端存储技术/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhoufanglu.github.io/2019/01/18/前端存储技术/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'tog';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'tog';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":220,"height":500,"position":"left","hOffset":10,"vOffset":-10},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

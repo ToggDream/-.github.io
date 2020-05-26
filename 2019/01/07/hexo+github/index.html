@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>hexo | Tog | do for do</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="black">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="1.hexo环境的搭建与启动                                                                                             github&amp;hexo              &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在我看来，这就是一个blog的一个页面框架，markdown文件-转换为html页">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo">
+<meta property="og:url" content="https://zhoufanglu.github.io/2019/01/07/hexo+github/index.html">
+<meta property="og:site_name" content="Tog">
+<meta property="og:description" content="1.hexo环境的搭建与启动                                                                                             github&amp;hexo              &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在我看来，这就是一个blog的一个页面框架，markdown文件-转换为html页">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://zhoufanglu.github.io/2019/01/public/img/小丑壁纸1080.jpg">
+<meta property="og:updated_time" content="2019-12-15T03:40:47.361Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hexo">
+<meta name="twitter:description" content="1.hexo环境的搭建与启动                                                                                             github&amp;hexo              &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在我看来，这就是一个blog的一个页面框架，markdown文件-转换为html页">
+<meta name="twitter:image" content="https://zhoufanglu.github.io/2019/01/public/img/小丑壁纸1080.jpg">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/headimg.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">卢方舟</h5>
+          <a href="mailto:735417031@qq.com" title="735417031@qq.com" class="mail">735417031@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://juejin.im/user/5afd39c36fb9a07ac162a318" target="_blank">
+                <i class="icon icon-lg icon-archives"></i>
+                掘金
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhoufanglu" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://movie.douban.com/chart" target="_blank">
+                <i class="icon icon-lg icon-tags"></i>
+                豆瓣
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">hexo</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">
+            <!--<=title.slice(10)>&-->Tog
+        </h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-07T02:15:27.000Z" itemprop="datePublished" class="page-time">
+  2019-01-07
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/hexo-github/">hexo github</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-hexo环境的搭建与启动"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.hexo环境的搭建与启动</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#hexo的安装"><span class="post-toc-number">1.0.0.1.</span> <span class="post-toc-text">hexo的安装</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#初始化你的博客"><span class="post-toc-number">1.0.0.2.</span> <span class="post-toc-text">初始化你的博客</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#进入blog目录"><span class="post-toc-number">1.0.0.3.</span> <span class="post-toc-text">进入blog目录</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#常用命令"><span class="post-toc-number">1.0.0.4.</span> <span class="post-toc-text">常用命令</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#config-yml的配置"><span class="post-toc-number">1.0.0.5.</span> <span class="post-toc-text">_config.yml的配置</span></a></li></ol></li></ol><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-hexo和github关联"><span class="post-toc-number">2.</span> <span class="post-toc-text">2.hexo和github关联</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#blog目录下的-config-yml"><span class="post-toc-number">2.0.0.1.</span> <span class="post-toc-text">blog目录下的_config.yml</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#访问你的github地址"><span class="post-toc-number">2.0.0.2.</span> <span class="post-toc-text">访问你的github地址</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-解析自定义域名"><span class="post-toc-number">3.</span> <span class="post-toc-text">3.解析自定义域名</span></a></li>
+        </nav>
+    </aside>
+
+
+<article id="photo-hexo+github" class="post-article article-type-photo fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">hexo</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-07 10:15:27" datetime="2019-01-07T02:15:27.000Z" itemprop="datePublished">2019-01-07</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/hexo-github/">hexo github</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <meta name="referrer" content="no-referrer">
+
+
+<h1 id="1-hexo环境的搭建与启动"><a href="#1-hexo环境的搭建与启动" class="headerlink" title="1.hexo环境的搭建与启动"></a>1.hexo环境的搭建与启动</h1><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://github.com/zhoufanglu/markdownPhoto/blob/master/hexo/hexo&github.png?raw=true" alt="github&hexo" title="">
+                </div>
+                <div class="image-caption">github&hexo</div>
+            </figure>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;在我看来，这就是一个blog的一个页面框架，markdown文件-转换为html页面。<br>使用hexo，必须安装git,node.js.这里就不多说</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;这个是基于hexo搭建的，匆匆忙忙搞了两天，有点菜，要学的东西很多，之前git都是<br>用的图形化，搭建的时候发现git命令行一塌浮涂，要学，要学啊。。</p>
+<h4 id="hexo的安装"><a href="#hexo的安装" class="headerlink" title="hexo的安装"></a>hexo的安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<h4 id="初始化你的博客"><a href="#初始化你的博客" class="headerlink" title="初始化你的博客"></a>初始化你的博客</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog #在你的仓库内初始化</span><br></pre></td></tr></table></figure>
+<h4 id="进入blog目录"><a href="#进入blog目录" class="headerlink" title="进入blog目录"></a>进入blog目录</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> first_blog <span class="comment">//创建第一个目录</span></span><br><span class="line">hexo g <span class="comment">//生产</span></span><br><span class="line">hexo s <span class="comment">//运行hexo服务</span></span><br></pre></td></tr></table></figure>
+<p>这些命令在后面作介绍，完成后，打开浏览器输入地址：这样本地的hexo环境已经搭建完毕啦</p>
+<p>localhost:4000</p>
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">npm</span> <span class="string">install</span> <span class="string">hexo</span> <span class="bullet">-g</span> <span class="comment">#安装Hexo</span></span><br><span class="line"><span class="string">npm</span> <span class="string">update</span> <span class="string">hexo</span> <span class="bullet">-g</span> <span class="comment">#升级</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">init</span> <span class="comment">#初始化博客</span></span><br><span class="line"></span><br><span class="line"><span class="string">命令简写</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">n</span> <span class="string">"我的博客"</span> <span class="string">==</span> <span class="string">hexo</span> <span class="string">new</span> <span class="string">"我的博客"</span> <span class="comment">#新建文章</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">g</span> <span class="string">==</span> <span class="string">hexo</span> <span class="string">generate</span> <span class="comment">#生成</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">s</span> <span class="string">==</span> <span class="string">hexo</span> <span class="string">server</span> <span class="comment">#启动服务预览</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">d</span> <span class="string">==</span> <span class="string">hexo</span> <span class="string">deploy</span> <span class="comment">#部署</span></span><br><span class="line"></span><br><span class="line"><span class="string">hexo</span> <span class="string">server</span> <span class="comment">#Hexo会监视文件变动并自动更新，无须重启服务器</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">server</span> <span class="bullet">-s</span> <span class="comment">#静态模式</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">server</span> <span class="bullet">-p</span> <span class="number">5000</span> <span class="comment">#更改端口</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">server</span> <span class="bullet">-i</span> <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span> <span class="comment">#自定义 IP</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">clean</span> <span class="comment">#清除缓存，若是网页正常情况下可以忽略这条命令</span></span><br></pre></td></tr></table></figure>
+<h4 id="config-yml的配置"><a href="#config-yml的配置" class="headerlink" title="_config.yml的配置"></a>_config.yml的配置</h4><p>_config.yml 一个在blog目录下的，这个为博客配置<br>_config.yml 一个在them目录下，这个为皮肤配置<br>跟换皮肤可以在往上下载后放在themes目录下进行跟换</p>
+<h1 id="2-hexo和github关联"><a href="#2-hexo和github关联" class="headerlink" title="2.hexo和github关联"></a>2.hexo和github关联</h1><p><b>这里要注意下电脑上的github账号和所提交的账号是需要是同一个。不然要进行配置</b></p>
+<h4 id="blog目录下的-config-yml"><a href="#blog目录下的-config-yml" class="headerlink" title="blog目录下的_config.yml"></a>blog目录下的_config.yml</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">#在最后加上你的Github仓库地址</span></span><br><span class="line"><span class="attr">  deploy:</span></span><br><span class="line"><span class="attr">    type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">    repo:</span> <span class="string">git@github.com:zhoufanglu/zhoufanglu.github.io.git</span> <span class="comment">#使用ssh</span></span><br><span class="line"><span class="attr">    branch:</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#最后运行</span></span><br><span class="line"><span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-deployer-git</span> <span class="bullet">--save</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#上线</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">clean</span>  <span class="comment">#清除缓存</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">g</span>  <span class="comment">#构建</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">d</span>  <span class="comment">#deploy 部署</span></span><br><span class="line"><span class="comment">#这里需要注意的是，仓库名格式必须为xxx.github.io 可以去github内设置</span></span><br></pre></td></tr></table></figure>
+<p>  <font color="red" size="4">这里需要注意的是，这里上传到Github仓库的是hexo构建后的静态文件，建议本地文件重新放入一个新的github的仓库！以防丢失！</font></p>
+<h4 id="访问你的github地址"><a href="#访问你的github地址" class="headerlink" title="访问你的github地址"></a>访问你的github地址</h4><p>zhoufanglu.github.io.git</p>
+<h1 id="3-解析自定义域名"><a href="#3-解析自定义域名" class="headerlink" title="3.解析自定义域名"></a>3.解析自定义域名</h1><p>还没有租服务器 先不写= -</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-12-15T03:40:47.361Z" itemprop="dateUpdated">2019-12-15 11:40:47</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://zhoufanglu.github.io">
+            <img src="/img/headimg.jpg" alt="卢方舟">
+            卢方舟
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhoufanglu.github.io/2019/01/07/hexo+github/&title=《hexo》 — Tog&pic=../../public/img/小丑壁纸1080.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhoufanglu.github.io/2019/01/07/hexo+github/&title=《hexo》 — Tog&source=随便学习" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhoufanglu.github.io/2019/01/07/hexo+github/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《hexo》 — Tog&url=https://zhoufanglu.github.io/2019/01/07/hexo+github/&via=https://zhoufanglu.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhoufanglu.github.io/2019/01/07/hexo+github/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/01/07/markdown/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">markdown</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '',
+                client_secret: '',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        ojbk~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/微信.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/微信.png" data-alipay="/img/支付宝.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>卢方舟 &copy; 2019 - 2020</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">CP_license: 苏ICP备1234556号-1</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhoufanglu.github.io/2019/01/07/hexo+github/&title=《hexo》 — Tog&pic=../../public/img/小丑壁纸1080.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhoufanglu.github.io/2019/01/07/hexo+github/&title=《hexo》 — Tog&source=随便学习" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhoufanglu.github.io/2019/01/07/hexo+github/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《hexo》 — Tog&url=https://zhoufanglu.github.io/2019/01/07/hexo+github/&via=https://zhoufanglu.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhoufanglu.github.io/2019/01/07/hexo+github/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhoufanglu.github.io/2019/01/07/hexo+github/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'tog';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'tog';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":220,"height":500,"position":"left","hOffset":10,"vOffset":-10},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

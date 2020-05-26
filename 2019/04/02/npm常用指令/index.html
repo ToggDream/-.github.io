@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>npm常用指令 | Tog | do for do</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="black">
+    
+    
+    <meta name="keywords" content="npm">
+    <meta name="description" content="npm （Node Package Manager）包管理工具—增删改查-S,–save 把名称放入package.json的dependencies字段内    npm gulp --save 默认会安装最新版本。  package.json文件的 dependencices字段:123&quot;dependencies&quot;:&amp;#123;   &quot;gulp&quot;: &apos;^3.9.1&apos;&amp;#125;  -D,–sav">
+<meta name="keywords" content="npm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="npm常用指令">
+<meta property="og:url" content="https://zhoufanglu.github.io/2019/04/02/npm常用指令/index.html">
+<meta property="og:site_name" content="Tog">
+<meta property="og:description" content="npm （Node Package Manager）包管理工具—增删改查-S,–save 把名称放入package.json的dependencies字段内    npm gulp --save 默认会安装最新版本。  package.json文件的 dependencices字段:123&quot;dependencies&quot;:&amp;#123;   &quot;gulp&quot;: &apos;^3.9.1&apos;&amp;#125;  -D,–sav">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-15T03:40:47.361Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="npm常用指令">
+<meta name="twitter:description" content="npm （Node Package Manager）包管理工具—增删改查-S,–save 把名称放入package.json的dependencies字段内    npm gulp --save 默认会安装最新版本。  package.json文件的 dependencices字段:123&quot;dependencies&quot;:&amp;#123;   &quot;gulp&quot;: &apos;^3.9.1&apos;&amp;#125;  -D,–sav">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/headimg.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">卢方舟</h5>
+          <a href="mailto:735417031@qq.com" title="735417031@qq.com" class="mail">735417031@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://juejin.im/user/5afd39c36fb9a07ac162a318" target="_blank">
+                <i class="icon icon-lg icon-archives"></i>
+                掘金
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhoufanglu" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://movie.douban.com/chart" target="_blank">
+                <i class="icon icon-lg icon-tags"></i>
+                豆瓣
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">npm常用指令</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">
+            <!--<=title.slice(10)>&-->Tog
+        </h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-04-02T05:50:49.000Z" itemprop="datePublished" class="page-time">
+  2019-04-02
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/npm/">npm</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#npm-（Node-Package-Manager）包管理工具—增删改查"><span class="post-toc-number">1.</span> <span class="post-toc-text">npm （Node Package Manager）包管理工具—增删改查</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#S-–save-把名称放入package-json的dependencies字段内"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">-S,–save 把名称放入package.json的dependencies字段内</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#本地安装"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">本地安装</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#全局安装"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">全局安装</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#卸载模块-npm-unistall"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">卸载模块 npm unistall</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#查看模块-npm-ls"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">查看模块 npm ls</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#更新"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">更新</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#npm-init-在项目中创建一个package-json文件"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">npm init 在项目中创建一个package.json文件</span></a></li></ol></li></ol><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小结"><span class="post-toc-number"></span> <span class="post-toc-text">小结</span></a>
+        </li></nav>
+    </aside>
+
+
+<article id="post-npm常用指令" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">npm常用指令</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-04-02 13:50:49" datetime="2019-04-02T05:50:49.000Z" itemprop="datePublished">2019-04-02</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/npm/">npm</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h4 id="npm-（Node-Package-Manager）包管理工具—增删改查"><a href="#npm-（Node-Package-Manager）包管理工具—增删改查" class="headerlink" title="npm （Node Package Manager）包管理工具—增删改查"></a>npm （Node Package Manager）包管理工具—增删改查</h4><h5 id="S-–save-把名称放入package-json的dependencies字段内"><a href="#S-–save-把名称放入package-json的dependencies字段内" class="headerlink" title="-S,–save 把名称放入package.json的dependencies字段内"></a>-S,–save 把名称放入<code>package.json</code>的<code>dependencies</code>字段内</h5><meta name="referrer" content="no-referrer">
+
+
+
+<p><code>npm gulp --save</code> 默认会安装最新版本。</p>
+<blockquote>
+<p><code>package.json</code>文件的 <code>dependencices</code>字段:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"dependencies"</span>:&#123;</span><br><span class="line">   <span class="string">"gulp"</span>: <span class="string">'^3.9.1'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p><strong>-D,–save-dev 安装包信息将加入到<code>devDependencies</code>（开发阶段的依赖），所以开发阶段一般使用它</strong></p>
+<blockquote>
+<p> <code>package.json</code>文件的 <code>devDependencices</code>字段:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"gulp"</span>: <span class="string">"^3.9.1"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h5 id="本地安装"><a href="#本地安装" class="headerlink" title="本地安装"></a>本地安装</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install gulp</span><br></pre></td></tr></table></figure>
+<h5 id="全局安装"><a href="#全局安装" class="headerlink" title="全局安装"></a>全局安装</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install gulp -g</span><br></pre></td></tr></table></figure>
+<h5 id="卸载模块-npm-unistall"><a href="#卸载模块-npm-unistall" class="headerlink" title="卸载模块 npm unistall"></a>卸载模块 npm unistall</h5><p>基础语法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall gulp</span><br></pre></td></tr></table></figure></p>
+<p>卸载开发版本模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall gulp --save-dev</span><br><span class="line">npm uninstall gulp -D  *缩写*</span><br></pre></td></tr></table></figure></p>
+<h5 id="查看模块-npm-ls"><a href="#查看模块-npm-ls" class="headerlink" title="查看模块 npm ls"></a>查看模块 npm ls</h5><p>查看当前项目下模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm ls</span><br></pre></td></tr></table></figure></p>
+<p>查看全局模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm ls -g</span><br></pre></td></tr></table></figure></p>
+<h5 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update [-g] gulp</span><br></pre></td></tr></table></figure>
+<h5 id="npm-init-在项目中创建一个package-json文件"><a href="#npm-init-在项目中创建一个package-json文件" class="headerlink" title="npm init 在项目中创建一个package.json文件"></a>npm init 在项目中创建一个package.json文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p><strong>开发的时候 <code>npm install name -D</code>就完事了</strong><br><strong>npm相当一个插件库，需要什么装什么，装好了use就行了，就像刚刚开始使用jquery一样,jquery就是一个库。</strong></p>
+<p>以上内容部分摘自<a href="https://www.cnblogs.com/PeunZhang/p/5553574.html" target="_blank" rel="noopener">npm常用命令</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-12-15T03:40:47.361Z" itemprop="dateUpdated">2019-12-15 11:40:47</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://zhoufanglu.github.io">
+            <img src="/img/headimg.jpg" alt="卢方舟">
+            卢方舟
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhoufanglu.github.io/2019/04/02/npm常用指令/&title=《npm常用指令》 — Tog&pic=https://zhoufanglu.github.io/img/headimg.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhoufanglu.github.io/2019/04/02/npm常用指令/&title=《npm常用指令》 — Tog&source=随便学习" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhoufanglu.github.io/2019/04/02/npm常用指令/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《npm常用指令》 — Tog&url=https://zhoufanglu.github.io/2019/04/02/npm常用指令/&via=https://zhoufanglu.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhoufanglu.github.io/2019/04/02/npm常用指令/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/04/12/浅谈v-slot/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">浅谈v-slot</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/22/3月的伤，4月的愁/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">3月的伤</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '',
+                client_secret: '',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        ojbk~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/微信.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/微信.png" data-alipay="/img/支付宝.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>卢方舟 &copy; 2019 - 2020</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">CP_license: 苏ICP备1234556号-1</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhoufanglu.github.io/2019/04/02/npm常用指令/&title=《npm常用指令》 — Tog&pic=https://zhoufanglu.github.io/img/headimg.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhoufanglu.github.io/2019/04/02/npm常用指令/&title=《npm常用指令》 — Tog&source=随便学习" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhoufanglu.github.io/2019/04/02/npm常用指令/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《npm常用指令》 — Tog&url=https://zhoufanglu.github.io/2019/04/02/npm常用指令/&via=https://zhoufanglu.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhoufanglu.github.io/2019/04/02/npm常用指令/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhoufanglu.github.io/2019/04/02/npm常用指令/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'tog';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'tog';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":220,"height":500,"position":"left","hOffset":10,"vOffset":-10},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

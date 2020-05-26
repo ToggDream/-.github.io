@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>vue组件props传值,对象获取不到的问题 | Tog | do for do</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="black">
+    
+    
+    <meta name="keywords" content="Vue">
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;先说问题，父组件利用props向子组件传值，浏览器console有这个值，但是获取不到内部的属性，困了我3个小时，真的**  父组件定义了personal这个值。在父组件接口中给这个值重新赋值。 子组件接受这个值,浏览器console能看到这个值，但是取不到属性的值。   以下为原代码 home.vue（父组件）–personal是被传的参数1">
+<meta name="keywords" content="Vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue组件props传值,对象获取不到的问题">
+<meta property="og:url" content="https://zhoufanglu.github.io/2019/06/05/vue组件props传值-对象获取不到的问题/index.html">
+<meta property="og:site_name" content="Tog">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;先说问题，父组件利用props向子组件传值，浏览器console有这个值，但是获取不到内部的属性，困了我3个小时，真的**  父组件定义了personal这个值。在父组件接口中给这个值重新赋值。 子组件接受这个值,浏览器console能看到这个值，但是取不到属性的值。   以下为原代码 home.vue（父组件）–personal是被传的参数1">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/6/5/16b2727449e534d1?w=535&h=278&f=png&s=23702">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/6/5/16b272c27bf8805d?w=481&h=338&f=png&s=21202">
+<meta property="og:updated_time" content="2019-12-15T03:40:47.361Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue组件props传值,对象获取不到的问题">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;先说问题，父组件利用props向子组件传值，浏览器console有这个值，但是获取不到内部的属性，困了我3个小时，真的**  父组件定义了personal这个值。在父组件接口中给这个值重新赋值。 子组件接受这个值,浏览器console能看到这个值，但是取不到属性的值。   以下为原代码 home.vue（父组件）–personal是被传的参数1">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2019/6/5/16b2727449e534d1?w=535&h=278&f=png&s=23702">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/headimg.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">卢方舟</h5>
+          <a href="mailto:735417031@qq.com" title="735417031@qq.com" class="mail">735417031@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://juejin.im/user/5afd39c36fb9a07ac162a318" target="_blank">
+                <i class="icon icon-lg icon-archives"></i>
+                掘金
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhoufanglu" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://movie.douban.com/chart" target="_blank">
+                <i class="icon icon-lg icon-tags"></i>
+                豆瓣
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">vue组件props传值,对象获取不到的问题</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">
+            <!--<=title.slice(10)>&-->Tog
+        </h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-06-05T10:47:34.000Z" itemprop="datePublished" class="page-time">
+  2019-06-05
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Vue/">Vue</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#home-vue（父组件）–personal是被传的参数"><span class="post-toc-number">1.</span> <span class="post-toc-text">home.vue（父组件）–personal是被传的参数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#formPicker-（子组件）-–接收personal"><span class="post-toc-number">2.</span> <span class="post-toc-text">formPicker （子组件） –接收personal</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解决方法–使用watch"><span class="post-toc-number">3.</span> <span class="post-toc-text">解决方法–使用watch</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-vue组件props传值-对象获取不到的问题" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">vue组件props传值,对象获取不到的问题</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-06-05 18:47:34" datetime="2019-06-05T10:47:34.000Z" itemprop="datePublished">2019-06-05</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Vue/">Vue</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <meta name="referrer" content="no-referrer">
+
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;先说问题，父组件利用props向子组件传值，浏览器<code>console</code>有这个值，但是获取不到内部的属性，困了我3个小时，真的**</p>
+<ul>
+<li>父组件定义了<code>personal</code>这个值。在父组件接口中给这个值重新赋值。</li>
+<li>子组件接受这个值,浏览器<code>console</code>能看到这个值，但是取不到属性的值。</li>
+</ul>
+<hr>
+<p><strong>以下为原代码</strong></p>
+<h4 id="home-vue（父组件）–personal是被传的参数"><a href="#home-vue（父组件）–personal是被传的参数" class="headerlink" title="home.vue（父组件）–personal是被传的参数"></a>home.vue（父组件）–personal是被传的参数</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--子组件--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form-picker</span> <span class="attr">class</span>=<span class="string">"form-picker"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">:personal</span>=<span class="string">"personal"</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form-picker</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    data()&#123;</span><br><span class="line">        <span class="keyword">return</span>&#123;</span><br><span class="line">            personal:&#123;</span><br><span class="line">                state:<span class="string">''</span>,<span class="comment">////判断是修改状态，还是新增状态  add/edit</span></span><br><span class="line">                data:[]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    mounted()&#123;</span><br><span class="line">      <span class="keyword">this</span>.$api.personal.searchPersonalInfo(<span class="keyword">this</span>.userInfo.userId).then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;</span><br><span class="line">          <span class="keyword">this</span>.personal.data = res.data.data <span class="comment">//这里给personal对象赋值接口传来的数据</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="formPicker-（子组件）-–接收personal"><a href="#formPicker-（子组件）-–接收personal" class="headerlink" title="formPicker （子组件） –接收personal"></a>formPicker （子组件） –接收personal</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    props:[<span class="string">'active'</span>,<span class="string">'personal'</span>],</span><br><span class="line">    mounted()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">149</span>,<span class="keyword">this</span>.personal)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">150</span>,<span class="keyword">this</span>.personal.state)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>运行结果</strong></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://user-gold-cdn.xitu.io/2019/6/5/16b2727449e534d1?w=535&h=278&f=png&s=23702" alt="结果" title="">
+                </div>
+                <div class="image-caption">结果</div>
+            </figure>
+<p><strong><font color="red">明明149行有<code>state</code>值，150行输出却没有了,是不是超级奇怪</font></strong></p>
+<ul>
+<li>后面经过大佬的讲解，其实浏览器console.log也是应该没有的<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://user-gold-cdn.xitu.io/2019/6/5/16b272c27bf8805d?w=481&h=338&f=png&s=21202" alt="缓存问题" title="">
+                </div>
+                <div class="image-caption">缓存问题</div>
+            </figure></li>
+<li>所以，其实我们子组件一开始根本就没有取到这个personal这个对象。</li>
+</ul>
+<h4 id="解决方法–使用watch"><a href="#解决方法–使用watch" class="headerlink" title="解决方法–使用watch"></a>解决方法–使用watch</h4><p>父组件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    data()&#123;</span><br><span class="line">        <span class="keyword">return</span>&#123;</span><br><span class="line">            personal:&#123;</span><br><span class="line">                state:<span class="string">''</span>,<span class="comment">////判断是修改状态，还是新增状态  add/edit</span></span><br><span class="line">                data:[]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    mounted()&#123;</span><br><span class="line">      <span class="keyword">this</span>.$api.personal.searchPersonalInfo(<span class="keyword">this</span>.userInfo.userId).then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;</span><br><span class="line">          <span class="comment">//this.personal.data = res.data.data //这里给personal对象赋值接口传来的数据</span></span><br><span class="line">          <span class="comment">//使用以下方法重新赋值，上面方法watch监听不到，具体什么原因，我也不清楚，知道的告知我！谢谢</span></span><br><span class="line">          <span class="keyword">this</span>.personal = &#123;</span><br><span class="line">            data: res.data.data,</span><br><span class="line">            state: <span class="string">'edit'</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>接下来子组件就能<code>watch</code>到<code>personal</code>了<br>子组件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">watch:&#123;</span><br><span class="line">      personal(newValue,oldValue)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">181</span>,newValue)</span><br><span class="line">      &#125;,</span><br><span class="line"><span class="comment">/** 输出</span></span><br><span class="line"><span class="comment">        &#123;</span></span><br><span class="line"><span class="comment">            data: res.data.data,</span></span><br><span class="line"><span class="comment">            state: 'edit'</span></span><br><span class="line"><span class="comment">          &#125;</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-12-15T03:40:47.361Z" itemprop="dateUpdated">2019-12-15 11:40:47</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://zhoufanglu.github.io">
+            <img src="/img/headimg.jpg" alt="卢方舟">
+            卢方舟
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhoufanglu.github.io/2019/06/05/vue组件props传值-对象获取不到的问题/&title=《vue组件props传值,对象获取不到的问题》 — Tog&pic=https://zhoufanglu.github.io/img/headimg.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhoufanglu.github.io/2019/06/05/vue组件props传值-对象获取不到的问题/&title=《vue组件props传值,对象获取不到的问题》 — Tog&source=随便学习" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhoufanglu.github.io/2019/06/05/vue组件props传值-对象获取不到的问题/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue组件props传值,对象获取不到的问题》 — Tog&url=https://zhoufanglu.github.io/2019/06/05/vue组件props传值-对象获取不到的问题/&via=https://zhoufanglu.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhoufanglu.github.io/2019/06/05/vue组件props传值-对象获取不到的问题/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/06/18/记一次端午/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">记一次端午</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/05/08/寻根问祖app的幻想/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">寻根问祖app的幻想</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '',
+                client_secret: '',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        ojbk~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/微信.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/微信.png" data-alipay="/img/支付宝.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>卢方舟 &copy; 2019 - 2020</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">CP_license: 苏ICP备1234556号-1</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhoufanglu.github.io/2019/06/05/vue组件props传值-对象获取不到的问题/&title=《vue组件props传值,对象获取不到的问题》 — Tog&pic=https://zhoufanglu.github.io/img/headimg.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhoufanglu.github.io/2019/06/05/vue组件props传值-对象获取不到的问题/&title=《vue组件props传值,对象获取不到的问题》 — Tog&source=随便学习" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhoufanglu.github.io/2019/06/05/vue组件props传值-对象获取不到的问题/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue组件props传值,对象获取不到的问题》 — Tog&url=https://zhoufanglu.github.io/2019/06/05/vue组件props传值-对象获取不到的问题/&via=https://zhoufanglu.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhoufanglu.github.io/2019/06/05/vue组件props传值-对象获取不到的问题/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhoufanglu.github.io/2019/06/05/vue组件props传值-对象获取不到的问题/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'tog';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'tog';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":220,"height":500,"position":"left","hOffset":10,"vOffset":-10},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

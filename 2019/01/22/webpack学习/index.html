@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>webpack基础学习 | Tog | do for do</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="black">
+    
+    
+    <meta name="keywords" content="webpack">
+    <meta name="description" content="今天看了同事配置的package.json 看了之后一头雾水，所以来学习一下webpack。 webpack4.X入门配置1.安装webpacknpm install webpack webpack-cli webpack-dev-server -g-g是全局安装。 2.输入命令mkdir config dist src创建这三个文件夹，手动也可以。">
+<meta name="keywords" content="webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack基础学习">
+<meta property="og:url" content="https://zhoufanglu.github.io/2019/01/22/webpack学习/index.html">
+<meta property="og:site_name" content="Tog">
+<meta property="og:description" content="今天看了同事配置的package.json 看了之后一头雾水，所以来学习一下webpack。 webpack4.X入门配置1.安装webpacknpm install webpack webpack-cli webpack-dev-server -g-g是全局安装。 2.输入命令mkdir config dist src创建这三个文件夹，手动也可以。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://github.com/zhoufanglu/markdownPhoto/blob/master/webpack/%E6%96%87%E4%BB%B6.png?raw=true">
+<meta property="og:image" content="https://github.com/zhoufanglu/markdownPhoto/blob/master/webpack/%E7%9B%AE%E5%BD%95.png?raw=true">
+<meta property="og:image" content="https://github.com/zhoufanglu/markdownPhoto/blob/master/webpack/%E6%89%93%E5%8C%85-%E7%9B%AE%E5%BD%95.png?raw=true">
+<meta property="og:image" content="https://github.com/zhoufanglu/markdownPhoto/blob/master/webpack/%E6%89%93%E5%8C%85%E8%AD%A6%E5%91%8A.png?raw=true">
+<meta property="og:image" content="https://github.com/zhoufanglu/markdownPhoto/blob/master/webpack/dev.png?raw=true">
+<meta property="og:image" content="https://github.com/zhoufanglu/markdownPhoto/blob/master/webpack/pro.png?raw=true">
+<meta property="og:image" content="https://github.com/zhoufanglu/markdownPhoto/blob/master/webpack/node_modules.png?raw=true">
+<meta property="og:image" content="https://github.com/zhoufanglu/markdownPhoto/blob/master/webpack/main%E9%85%8D%E7%BD%AE.png?raw=true">
+<meta property="og:updated_time" content="2019-12-15T03:40:47.361Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack基础学习">
+<meta name="twitter:description" content="今天看了同事配置的package.json 看了之后一头雾水，所以来学习一下webpack。 webpack4.X入门配置1.安装webpacknpm install webpack webpack-cli webpack-dev-server -g-g是全局安装。 2.输入命令mkdir config dist src创建这三个文件夹，手动也可以。">
+<meta name="twitter:image" content="https://github.com/zhoufanglu/markdownPhoto/blob/master/webpack/%E6%96%87%E4%BB%B6.png?raw=true">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/headimg.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">卢方舟</h5>
+          <a href="mailto:735417031@qq.com" title="735417031@qq.com" class="mail">735417031@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://juejin.im/user/5afd39c36fb9a07ac162a318" target="_blank">
+                <i class="icon icon-lg icon-archives"></i>
+                掘金
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhoufanglu" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://movie.douban.com/chart" target="_blank">
+                <i class="icon icon-lg icon-tags"></i>
+                豆瓣
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">webpack基础学习</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">
+            <!--<=title.slice(10)>&-->Tog
+        </h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-22T05:49:59.000Z" itemprop="datePublished" class="page-time">
+  2019-01-22
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/webpack/">webpack</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#webpack4-X入门配置"><span class="post-toc-number">1.</span> <span class="post-toc-text">webpack4.X入门配置</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-webpack学习" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">webpack基础学习</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-22 13:49:59" datetime="2019-01-22T05:49:59.000Z" itemprop="datePublished">2019-01-22</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/webpack/">webpack</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <meta name="referrer" content="no-referrer">
+
+
+<p>今天看了同事配置的package.json 看了之后一头雾水，所以来学习一下webpack。</p>
+<h1 id="webpack4-X入门配置"><a href="#webpack4-X入门配置" class="headerlink" title="webpack4.X入门配置"></a>webpack4.X入门配置</h1><p>1.安装webpack<code>npm install webpack webpack-cli webpack-dev-server -g</code>-g是全局安装。</p>
+<p>2.输入命令<code>mkdir config dist src</code>创建这三个文件夹，手动也可以。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://github.com/zhoufanglu/markdownPhoto/blob/master/webpack/%E6%96%87%E4%BB%B6.png?raw=true" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>3.输入命令 <code>npm init -y</code> ,-y表示yes，都同意。<br>然后生成了package.json文件。</p>
+<p>4.在dist目录下创建index.html,src目录下创建index.js文件。<br>项目目录结构如下：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://github.com/zhoufanglu/markdownPhoto/blob/master/webpack/%E7%9B%AE%E5%BD%95.png?raw=true" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>5.webpack中打包默认找的是<code>src/index</code>为入口，然后在终端中输入<code>webpack</code>,进行简单打包。<br>打包后多了个main.js<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://github.com/zhoufanglu/markdownPhoto/blob/master/webpack/%E6%89%93%E5%8C%85-%E7%9B%AE%E5%BD%95.png?raw=true" alt="打包后目录" title="">
+                </div>
+                <div class="image-caption">打包后目录</div>
+            </figure><br>但是出现的警告:告知我们mode没有设置<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://github.com/zhoufanglu/markdownPhoto/blob/master/webpack/%E6%89%93%E5%8C%85%E8%AD%A6%E5%91%8A.png?raw=true" alt="警告" title="">
+                </div>
+                <div class="image-caption">警告</div>
+            </figure></p>
+<p>mode是webpack中独有的，有两种打包环境，一个是开发环境：development另外一个是生产环境：production<br>打包的时候输入<br><code>webpack --mode=development</code>  开发环境, <code>webpack --mode=production</code>   生产环境<br>就不会出现警告提示了</p>
+<p><code>webpack --mode=development</code> 体积大<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://github.com/zhoufanglu/markdownPhoto/blob/master/webpack/dev.png?raw=true" alt="dev" title="">
+                </div>
+                <div class="image-caption">dev</div>
+            </figure></p>
+<p><code>webpack --mode=production</code> 体积小<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://github.com/zhoufanglu/markdownPhoto/blob/master/webpack/pro.png?raw=true" alt="pro" title="">
+                </div>
+                <div class="image-caption">pro</div>
+            </figure></p>
+<p>最后出现了node_modules这个文件夹<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://github.com/zhoufanglu/markdownPhoto/blob/master/webpack/node_modules.png?raw=true" alt="node_modules" title="">
+                </div>
+                <div class="image-caption">node_modules</div>
+            </figure></p>
+<p>6.在config目录下创建<code>webpack.dev.js</code>。这个是webpack的配置文件。</p>
+<p>7.输入命令<code>rm dist/main.js src/index.js</code>移除掉这两个文件我们自己来配置</p>
+<p>7.1 在src目录下创建main.js</p>
+<blockquote>
+<p>7.2 在 <code>webpack.dev.js</code> 内配置，写入<br> <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://github.com/zhoufanglu/markdownPhoto/blob/master/webpack/main%E9%85%8D%E7%BD%AE.png?raw=true" alt="webpack.dev.js" title="">
+                </div>
+                <div class="image-caption">webpack.dev.js</div>
+            </figure></p>
+</blockquote>
+<blockquote>
+<p>7.3 现在执行<code>webpack --mode=&quot;development&quot;</code> 会报错，因为<code>src/index.html</code>入口已经被删除</p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-12-15T03:40:47.361Z" itemprop="dateUpdated">2019-12-15 11:40:47</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="https://zhoufanglu.github.io">
+            <img src="/img/headimg.jpg" alt="卢方舟">
+            卢方舟
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhoufanglu.github.io/2019/01/22/webpack学习/&title=《webpack基础学习》 — Tog&pic=https://zhoufanglu.github.io/img/headimg.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhoufanglu.github.io/2019/01/22/webpack学习/&title=《webpack基础学习》 — Tog&source=随便学习" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhoufanglu.github.io/2019/01/22/webpack学习/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《webpack基础学习》 — Tog&url=https://zhoufanglu.github.io/2019/01/22/webpack学习/&via=https://zhoufanglu.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhoufanglu.github.io/2019/01/22/webpack学习/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/02/13/2018/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">personal summary for year</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/01/18/前端存储技术/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">前端存储技术</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '',
+                client_secret: '',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        ojbk~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/微信.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/微信.png" data-alipay="/img/支付宝.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>卢方舟 &copy; 2019 - 2020</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">CP_license: 苏ICP备1234556号-1</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhoufanglu.github.io/2019/01/22/webpack学习/&title=《webpack基础学习》 — Tog&pic=https://zhoufanglu.github.io/img/headimg.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhoufanglu.github.io/2019/01/22/webpack学习/&title=《webpack基础学习》 — Tog&source=随便学习" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhoufanglu.github.io/2019/01/22/webpack学习/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《webpack基础学习》 — Tog&url=https://zhoufanglu.github.io/2019/01/22/webpack学习/&via=https://zhoufanglu.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhoufanglu.github.io/2019/01/22/webpack学习/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhoufanglu.github.io/2019/01/22/webpack学习/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'tog';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'tog';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":220,"height":500,"position":"left","hOffset":10,"vOffset":-10},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
